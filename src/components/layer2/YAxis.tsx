@@ -9,7 +9,7 @@ type AxisLeftProps = {
 
 const TICK_LENGTH = 10;
 
-export const AxisLeft = ({ yScale, pixelsPerTick, width }: AxisLeftProps) => {
+export const YAxis = ({ yScale, pixelsPerTick, width }: AxisLeftProps) => {
     const range = yScale.range();
 
     const ticks = useMemo(() => {
@@ -28,7 +28,7 @@ export const AxisLeft = ({ yScale, pixelsPerTick, width }: AxisLeftProps) => {
             {ticks.map(({ value, yOffset }) => (
                 <g
                     key={value}
-                    transform={"translate(0, {yOffset})"} // TODO struggling with back ticks
+                    transform={`translate(0, ${yOffset})`} // TODO struggling with back ticks
                     shapeRendering={"crispEdges"}
                 >
                     <line
@@ -43,7 +43,7 @@ export const AxisLeft = ({ yScale, pixelsPerTick, width }: AxisLeftProps) => {
                             fontSize: "10px",
                             textAnchor: "middle",
                             transform: "translateX(-20px)",
-                            fill: "#D2D7D3",
+                            fill: "white",
                         }}
                     >
                         {value}

@@ -1,4 +1,4 @@
-import { Visualization } from "./components/Visualization";
+import { Layer2 } from "./components/layer2/Layer2";
 
 function App() {
 
@@ -6,7 +6,7 @@ function App() {
     <div className="App">
       <div>
           <h1>NFTS AND THE ETH MARKET</h1>
-          <Visualization />
+          <Layer2 />
       </div>
     </div>
   )
