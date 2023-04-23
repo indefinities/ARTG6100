@@ -13,6 +13,7 @@ type ScatterplotProps = {
     width: number;
     height: number;
     data: {
+        name: String,
         date: Date,
         eth: number,
     }[];
@@ -21,9 +22,11 @@ type ScatterplotProps = {
 export const Scatterplot = ({ width, height, data }: ScatterplotProps) => {
     const boundsWidth = width - MARGIN.right - MARGIN.left;
     const boundsHeight = height - MARGIN.top - MARGIN.bottom;
+    // const [interactionData, setInteractionData] = useState<data | null>(null);
+
 
     const yScale = d3.scaleLinear()
-                    .domain([0, 2275])
+                    .domain([0, 1000])
                     .range([boundsHeight, 0]);
 
     const xScale = d3.scaleTime()
@@ -40,6 +43,14 @@ export const Scatterplot = ({ width, height, data }: ScatterplotProps) => {
                 y={yScale(d.eth)}
                 fill="white"
                 fillOpacity={0.5}
+                // onMouseEnter={() => // Each time the circle is hovered over...
+                //     setInteractionData({ // ... update the interactionData state with the circle information
+                //         xPos: xScale(d.date),
+                //         yPos: yScale(d.eth),
+                //         name: d.name,
+                //     })
+                // }
+                // onMouseLeave={() => setInteractionData(null)}
             />
         );
     });
@@ -52,12 +63,12 @@ export const Scatterplot = ({ width, height, data }: ScatterplotProps) => {
                     height={boundsHeight}
                     transform={`translate(${[MARGIN.left, MARGIN.top].join(",")})`}
                 >
-                    <YAxis yScale={yScale} pixelsPerTick={40} width={boundsWidth} />
+                    <YAxis yScale={yScale} pixelsPerTick={50} width={boundsWidth} />
 
                     <g transform={`translate(0, ${boundsHeight})`}>
                         <XAxis
                             xScale={xScale}
-                            pixelsPerTick={50}
+                            pixelsPerTick={100}
                             height={boundsHeight}
                         />
                     </g>
