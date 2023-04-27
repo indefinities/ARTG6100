@@ -12,6 +12,8 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+
+  margin: 0 5vw;
 }
 
 a {
@@ -60,7 +62,33 @@ button:focus-visible {
   &__flex {
     display: flex;
     flex-flow: row wrap;
-    align-items: flex-end;
+    align-items: center;
   }
 
+  &__img {
+    width: 500px;
+  }
+
+}
+
+.tooltip {
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.8);
+  border-radius: 4px;
+  color: white;
+  font-size: 12px;
+  padding: 4px;
+  margin-left: 15px;
+  transform: translateY(-50%);
+}
+
+/* Add an arrow */
+.tooltip:after {
+  content: "";
+  position:absolute;
+  border-width: 5px;  /* Arrow width */
+  left: -10px;  /* Arrow width * 2 */
+  top:50%;
+  transform:translateY(-50%);
+  border-color: transparent black transparent transparent;
 }
